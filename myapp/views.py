@@ -3,9 +3,10 @@ from django.db import connection
 
 
 def index(request):
+    input = request.GET.get('input')
+    query = f"select * from myapp_py5test where name = '{input}' "
+
     with connection.cursor() as cursor:
-        input = request.GET.get('input')
-        query = f"select * from myapp_py5test where name = '{input}' "
         cursor.execute(query)
 
         rows= cursor.fetchall()

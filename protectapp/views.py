@@ -1,7 +1,19 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.db import connection
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'protectapp/index.html')
+    input = request.GET.get('input', '')
+    query = "select * from protectapp_protectpy5test where name = %s "
+
+    with (connection.cursor() as cursor):
+        cursor.execute(query, [input])
+        rows=cursor.fetchall()
+
+        context = {
+            'rows':rows,
+        }
+
+        return
+        render(request, 'protectapp/index.html', context)

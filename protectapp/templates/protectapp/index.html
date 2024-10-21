@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="kr">
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>protect_app</title>
 </head>
 <body>
-  <h1>protectIndexPage</h1>
+    <h1>PROTECTAPP</h1>
+
+    <form method="GET" action="">
+        <input type="text" name="input">
+        <button type="submit">submit</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>score</th>
+            </tr>
+        </thead>
+        {% if rows %}
+        {% for row in rows %}
+        <tbody>
+            <tr>
+                <td>{{row.1}}</td>
+                <td>{{row.2}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        {% endif %}
+    </table>
+
 </body>
 </html>
