@@ -3,19 +3,21 @@ from django.db import connection
 
 
 def index(request):
-    input = request.GET.get('input')
-    query = f"select * from myapp_py5test where name = '{input}' "
+    context={}
 
-    with connection.cursor() as cursor:
-        cursor.execute(query)
+    if request.method == 'POST':
+        input = request.POST.get('input')
+        query = f"select * from myapp_py5test where name = '{input}' "
 
-        rows= cursor.fetchall()
+        with connection.cursor() as cursor:
+            cursor.execute(query)
 
-        context = {
-            'rows':rows,
+            rows= cursor.fetchall()
 
-        }
+            context = {
+                'rows':rows,
 
-        return render(request, 'myapp/index.html', context)
+            }
 
+    return render(request, 'myapp/index.html', context)
 
