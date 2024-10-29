@@ -82,7 +82,7 @@ DATABASES = {
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'NAME': 'myapp',
         'HOST': '127.0.0.1',
-        'PORT': '3307', #기존과 다름
+        'PORT': '33070', #기존과 다름
         'USER': 'root',
         'PASSWORD': 'root', #기존과 다름
 
